@@ -5,11 +5,16 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using MicroservicePortal.Web.Models;
+using MicroservicePortal.Web.Services;
 
 namespace MicroservicePortal.Web.Controllers
 {
     public class HomeController : Controller
     {
+        public HomeController()
+        {
+
+        }
         public IActionResult Index()
         {
             return View();
@@ -18,7 +23,8 @@ namespace MicroservicePortal.Web.Controllers
         public IActionResult About()
         {
             ViewData["Message"] = "Your application description page.";
-
+            var es = new EventService();
+            es.TriggerEvent();
             return View();
         }
 
